@@ -47,7 +47,6 @@ public class Catalog {
         this.catalogId = Integer.parseInt(scanner.nextLine());
         this.catalogName = inputcatalogName(scanner);
         this.description = inputDescription(scanner);
-
     }
 
     public String inputDescription(Scanner scanner) {
@@ -79,3 +78,4 @@ public class Catalog {
         return "Mã: " + catalogId + ", Tên: " + catalogName + ", Mô tả: " + description;
     }
 }
+

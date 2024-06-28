@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Product {
-    private int productId;
+    private String productId;
     private String productName;
     private double productPrice;
     private String description;
@@ -19,7 +19,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Catalog catalog, String description, int productId, String productName, double productPrice, boolean status, int stock) {
+    public Product(Catalog catalog, String description, String productId, String productName, double productPrice, boolean status, int stock) {
         this.catalog = catalog;
         this.description = description;
         this.productId = productId;
@@ -45,11 +45,11 @@ public class Product {
         this.description = description;
     }
 
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
@@ -90,6 +90,7 @@ public class Product {
         this.productName = inputProductName(scanner);
         System.out.println("Nhập mô tả:");
         this.description = scanner.nextLine();
+        System.out.println("Nhập giá sản phẩm:");
         this.productPrice = Double.parseDouble(scanner.nextLine());
         this.stock = inputStock(scanner);
         this.catalog = inputCatalogId(scanner);
@@ -107,7 +108,7 @@ public class Product {
         for (Catalog ca : CatalogService.catalogList) {
             System.out.printf("Mã: %d,Name: %s \n", ca.getCatalogId(), ca.getCatalogName());
         }
-        System.out.println("nhập Mã tác giả:");
+        System.out.println("nhập Mã danh mục:");
         do {
             int choice = Integer.parseInt(scanner.nextLine());
             int catalogId = findIndexById(choice);
@@ -132,7 +133,7 @@ public class Product {
     public int inputStock(Scanner scanner) {
         System.out.println("Nhập số lượng:");
         do {
-            int stock = scanner.nextInt();
+            int stock = Integer.parseInt(scanner.nextLine());
             if (stock >= 10) {
                 return stock;
             }
@@ -151,13 +152,13 @@ public class Product {
         } while (true);
     }
 
-    public int inputProductId(Scanner scanner) {
+    public String inputProductId(Scanner scanner) {
         System.out.println("Nhập mã sản phẩm:");
         do {
-            String regex = "(P)\\w{4}";
+            String regex = "P\\d{4}";
             String productName = scanner.nextLine();
             if (Pattern.matches(regex, productName)) {
-                return Integer.parseInt(productName);
+                return productName;
             } else {
                 System.err.println("bắt đầu bằng P và 4 ký tự số");
             }

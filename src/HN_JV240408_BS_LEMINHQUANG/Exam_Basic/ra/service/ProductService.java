@@ -5,7 +5,7 @@ import HN_JV240408_BS_LEMINHQUANG.Exam_Basic.ra.model.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductService implements IGenericService<Product, Integer> {
+public class ProductService implements IGenericService<Product, String> {
     public static List<Product> productList = new ArrayList<>();
 
     @Override
@@ -24,7 +24,7 @@ public class ProductService implements IGenericService<Product, Integer> {
     }
 
     @Override
-    public int findById(Integer id) {
+    public int findById(String id) {
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getProductId() == id) {
                 return i;
@@ -34,7 +34,7 @@ public class ProductService implements IGenericService<Product, Integer> {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         int index = findById(id);
         if (index >= 0) {
             productList.remove(index);
@@ -42,4 +42,5 @@ public class ProductService implements IGenericService<Product, Integer> {
             System.err.println("Không tồn tại!");
         }
     }
+
 }

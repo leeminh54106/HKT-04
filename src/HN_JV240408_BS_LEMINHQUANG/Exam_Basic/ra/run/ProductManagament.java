@@ -22,10 +22,10 @@ public class ProductManagament {
                     "3. Sắp xếp sản phẩm theo giá giảm dần \n" +
                     "4. Xóa sản phẩm theo mã \n" +
                     "5. Tìm kiếm sản phẩm theo tên sản phẩm \n" +
-                    "6. Thay đổi thông tin của sản phẩm theo mã sản phẩm " +
-                    "7. Thoát");
+                    "6. Thay đổi thông tin của sản phẩm theo mã sản phẩm \n " +
+                    "7. Thoát\n");
             System.out.println("Lựa chọn của bạn: ");
-            int choice = scanner.nextInt();
+            int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
                     inputProductList(scanner);
@@ -56,10 +56,10 @@ public class ProductManagament {
 
     private static void updateProduct(Scanner scanner) {
         System.out.println("Nhập mã sản phẩm cần cập nhật:");
-        int number = Integer.parseInt(scanner.nextLine());
+        String number = scanner.nextLine();
         int index = productFeature.findById(number);
         if(index >= 0){
-        Product updateProduct = ProductService.productList.get(index);
+            Product updateProduct = ProductService.productList.get(index);
             System.out.println("Cập nhập tên sản phẩm");
             updateProduct.setProductName(updateProduct.inputProductName(scanner));
             System.out.println("Cập nhâp giá sản phẩm");
@@ -99,7 +99,7 @@ public class ProductManagament {
 
     private static void deleteProduct(Scanner scanner) {
         System.out.println("Nhập mã sản phẩm muốn xóa:");
-        int idDelete = Integer.parseInt(scanner.nextLine());
+        String idDelete = scanner.nextLine();
         productFeature.delete(idDelete);
     }
 
@@ -122,7 +122,9 @@ public class ProductManagament {
 
     private static void inputProductList(Scanner scanner) {
         System.out.println("Nhập số lượng sản phẩm muốn thêm:");
+
         int number = Integer.parseInt(scanner.nextLine());
+
         for (int i = 0; i < number; i++) {
             Product newProduct = new Product();
             newProduct.inputProduct(scanner);

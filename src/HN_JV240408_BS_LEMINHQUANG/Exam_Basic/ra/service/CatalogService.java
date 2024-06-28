@@ -40,7 +40,7 @@ public class CatalogService implements IGenericService<Catalog, Integer> {
         if (index >= 0) {
             boolean isExist = false;
             for (Product product : ProductService.productList) {
-                if (product.getProductId() == id) {
+                if (product.getProductId().equals(id)) {
                     isExist = true;
                     break;
                 }
