@@ -29,8 +29,10 @@ public class CatalogManagement {
                     showCatalog();
                     break;
                 case 3:
+                    updateCatalog(scanner);
                     break;
                 case 4:
+                    deleteCatalog(scanner);
                     break;
                 case 5:
                     quit = false;
@@ -41,12 +43,34 @@ public class CatalogManagement {
         } while (quit);
     }
 
+    private static void deleteCatalog(Scanner scanner) {
+        System.out.println("Nhập Mã danh mục cần xóa:");
+        int idDelete = Integer.parseInt(scanner.nextLine());
+        catalogFeature.delete(idDelete);
+    }
+
+    private static void updateCatalog(Scanner scanner) {
+        System.out.println("Nhập Mã danh mục: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        int indexUpdate = catalogFeature.findById(id);
+        if (indexUpdate >= 0) {
+            Catalog catalogUpdate = CatalogService.catalogList.get(indexUpdate);
+            System.out.println("1. Tên: ");
+            catalogUpdate.setCatalogName(scanner.nextLine());
+            System.out.println("2.Mô tả: ");
+            catalogUpdate.setDescription(scanner.nextLine());
+        } else {
+            System.err.println("không tìm thấy!");
+        }
+    }
+
     private static void showCatalog() {
         if (catalogFeature.getAll().isEmpty()) {
             System.err.println("Danh mục rỗng!");
             return;
         }
-        for() {
+        for (Catalog ca : catalogFeature.getAll()) {
+            System.out.println(ca.toString());
 
         }
     }

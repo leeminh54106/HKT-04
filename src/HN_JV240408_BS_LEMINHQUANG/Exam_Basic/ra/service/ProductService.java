@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService implements IGenericService<Product, Integer> {
-    public static List<Product> productList = new ArrayList<Product>();
+    public static List<Product> productList = new ArrayList<>();
 
     @Override
     public List<Product> getAll() {

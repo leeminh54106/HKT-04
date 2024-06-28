@@ -90,12 +90,20 @@ public class Product {
         this.productName = inputProductName(scanner);
         System.out.println("Nhập mô tả:");
         this.description = scanner.nextLine();
+        this.productPrice = Double.parseDouble(scanner.nextLine());
         this.stock = inputStock(scanner);
         this.catalog = inputCatalogId(scanner);
         this.status = true;
+//        private int productId;
+//        private String productName;
+//        private double productPrice;
+//        private String description;
+//        private int stock;
+//        private Catalog catalog;
+//        private boolean status;
     }
 
-    private Catalog inputCatalogId(Scanner scanner) {
+    public Catalog inputCatalogId(Scanner scanner) {
         for (Catalog ca : CatalogService.catalogList) {
             System.out.printf("Mã: %d,Name: %s \n", ca.getCatalogId(), ca.getCatalogName());
         }
@@ -121,7 +129,7 @@ public class Product {
     }
 
 
-    private int inputStock(Scanner scanner) {
+    public int inputStock(Scanner scanner) {
         System.out.println("Nhập số lượng:");
         do {
             int stock = scanner.nextInt();
@@ -131,7 +139,7 @@ public class Product {
         } while (true);
     }
 
-    private String inputProductName(Scanner scanner) {
+    public String inputProductName(Scanner scanner) {
         System.out.println("Nhập tên sản phẩm:");
         do {
             String productName = scanner.nextLine();

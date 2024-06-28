@@ -43,7 +43,7 @@ public class Catalog {
     }
 
     public void inputCatalog(Scanner scanner) {
-        System.out.print("Nhập mã danh mục: ");
+        System.out.println("Nhập mã danh mục: ");
         this.catalogId = Integer.parseInt(scanner.nextLine());
         this.catalogName = inputcatalogName(scanner);
         this.description = inputDescription(scanner);

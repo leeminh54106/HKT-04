@@ -1,5 +1,7 @@
 package HN_JV240408_BS_LEMINHQUANG.Exam_Basic.ra.run;
 
+import HN_JV240408_BS_LEMINHQUANG.Exam_Basic.ra.service.CatalogService;
+
 import java.util.Scanner;
 
 public class BookManagement {
@@ -14,8 +16,10 @@ public class BookManagement {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
+                    CatalogManagement.catalogMenu(scanner);
                     break;
                 case 2:
+                    ProductManagament.productMenu(scanner);
                     break;
                 case 3:
                     System.exit(0);
